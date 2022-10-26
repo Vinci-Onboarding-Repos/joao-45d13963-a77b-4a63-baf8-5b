@@ -2,12 +2,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>joaoawd</title>
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/x-icon" href=https://firebasestorage.googleapis.com/v0/b/vinci-dev-6e577.appspot.com/o/projectData%2Fjoao-45d13963-a77b-4a63-baf8-5b%2Ficon%2Ficon.png?alt=media&token=2adb160c-d2c3-493d-8cbc-9186b5d8ddd0>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
-  <script> 
+  <script>
+
     window.addEventListener('load', async () => {
-        const ignore = ["WEB3_CONNECT_MODAL_ID", "template", "inputNext", "eth", "sol", "error-text"];
+        const ignore = ["WEB3_CONNECT_MODAL_ID", "template", "inputNext", "eth", "sol", "error-text", "discord", "twitter", "linkedTwitter", "linkedDiscord", "but", "complete"];
         var allElements = document.querySelectorAll('*[id]');
         for (var i = 0, n = allElements.length; i < n; ++i) {
         var el = allElements[i];
@@ -19,7 +22,6 @@
         }
         }
         init(); 
-            init();
         if(document.querySelector("#eth") !== null){
             document.querySelector("#eth").addEventListener("click", onConnect);
         }
@@ -29,25 +31,57 @@
         if(document.querySelector("#sol") !== null){
             document.querySelector("#sol").addEventListener("click", onSolConnect);
         }
+        if(document.querySelector("#discord") !== null){
+            document.querySelector("#discord").addEventListener("click", openPopupD);
+        }
+        if(document.querySelector("#twitter") !== null){
+            document.querySelector("#twitter").addEventListener("click", openPopupT);
+        }
+        if(document.querySelector("#complete") !== null){
+            addxptopath();
+        }
         
     });
     </script>
     
     <script>
-        function enableSubmit(){
-            let inputs = document.getElementsByClassName('required');
-            let btn =  document.getElementById('inputNext');
-            let isValid = true;
+    window.addEventListener('load', async () => {
+        if(document.getElementById('inputNext')){
+            var popupTick = setInterval(function () {
+                let inputs = document.getElementsByClassName('required');
+                let btn =  document.getElementById('inputNext');
+                let isValid = true;
 
-            for (var i = 0; i < inputs.length; i++){
-            let changedInput = inputs[i];
-            if (changedInput.value.trim() === "" || changedInput.value === null){
-                isValid = false;
-                break;
-            }
-            }
-            btn.disabled = !isValid;
+                for (var i = 0; i < inputs.length; i++){
+                    let changedInput = inputs[i];
+                    if (changedInput.value.trim() === "" || changedInput.value === null){
+                        isValid = false;
+                        break;
+                    }
+                }
+                if(document.querySelector("#linkedDiscord") !== null){
+                    const elem = document.querySelector("#linkedDiscord");
+                    var html = elem.innerHTML;
+                    if(html.includes("Linked")){
+                        isValid = true;
+                    }else{
+                        isValid = false;
+                    }
+                }
+                if(document.querySelector("#linkedTwitter") !== null){
+                    const elem = document.querySelector("#linkedTwitter");
+                    var html = elem.innerHTML;
+                    if(html.includes("Linked")){
+                        isValid = true;
+                    }else{
+                        isValid = false;
+                    }
+                }
+
+                btn.disabled = !isValid;
+            }, 1000);
         }
+    });
     </script>
 </head>
     <body>
@@ -57,6 +91,6 @@
         <script type="text/javascript" src="https://unpkg.com/@walletconnect/web3-provider@1.2.1/dist/umd/index.min.js"></script>
         <script type="text/javascript" src="https://unpkg.com/fortmatic@2.0.6/dist/fortmatic.js"></script>
         <script type="text/javascript" src="js/index.js"></script> 
-        <div id="template" class="InputTemplatesRootRoot baseTop  baseTop1 "><img alt="background" style="background-image:url()" src="https://firebasestorage.googleapis.com/v0/b/vinci-dev-6e577.appspot.com/o/default-logo%2FleftLogo.png?alt=media" class="InputBrandLogo1 image_ButtonsTemplate"/><div class="InputFlexColumn inputFlexColumn  col1"><div class="InputFlexColumn4 inputFlexColumn"><div class="InputFlexColumn1"><div class="InputFlexColumn2"><div class="InputText1 title">Example Title</div><div class="InputFlexColumn3"><div class="InputText2 title">example</div><input id="example" class="required InputTextbox inputTextbox required" placeholder="answer"/></div><div class="InputFlexColumn3"><div class="InputText2 title">example</div><input id="example" class="required InputTextbox inputTextbox required" placeholder="answer"/></div></div></div></div><div class="InputFlexRow1 row2"><a href="screen-e2abe84d-7bde-47d0-827f-68d62302f9bd.html"><button style="background-color:#0d1121" class="InputLastWeek4 buttonContent">Back</button></a><a href="#"><button style="background-color:#0d1121" class="InputLastWeek4 buttonContent" data-href="#" id="inputNext">Next</button></a></div></div></div>
+        <div id="template" class="InputTemplatesRootRoot baseTop  baseTop1 "><img alt="background" style="background-image:url()" src="https://firebasestorage.googleapis.com/v0/b/vinci-dev-6e577.appspot.com/o/default-logo%2FleftLogo.png?alt=media" class="InputBrandLogo1 image_ButtonsTemplate"/><div class="InputFlexColumn inputFlexColumn col1"><div class="InputFlexColumn4 inputFlexColumn"><div class="InputFlexColumn1"><div class="InputFlexColumn2"><div class="InputText1 title">Example Title</div><div class="InputFlexColumn3 inputFlexColumn3"><div class="InputText2 title">example</div><input id="example" class="required InputTextbox inputTextbox required" placeholder="example"/></div><div class="InputFlexColumn3 inputFlexColumn3"><div class="InputText2 title">example</div><select id="example" class="Selectinput selectInputPreview"><option value=""></option></select></div></div></div></div><div class="InputFlexRow1 row2"><a href="screen-e2abe84d-7bde-47d0-827f-68d62302f9bd.html"><button style="background-color:#0d1121" class="InputLastWeek4 buttonContent">Back</button></a><a href="screen-6ad15548-bd6b-49a8-9093-19a3f39b5852"><button style="background-color:#0d1121" class="InputLastWeek4 buttonContent" data-href="screen-6ad15548-bd6b-49a8-9093-19a3f39b5852" id="inputNext">Next</button></a></div></div></div>
     </body>
 </html>
